@@ -41,4 +41,10 @@ io.on('connection', (socket) => {
     io.emit("canvas_image_changed", data);
   });
 
+  //Save Canvas to s3
+  socket.on("save_canvas", function(data){
+    redisConnection.emit("save_canvas", {data});
+  })
+
+
 });

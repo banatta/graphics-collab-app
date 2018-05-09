@@ -26,7 +26,12 @@ class Canvas extends React.Component {
       return false;
     }
 
-    this.fileSaveHandler = () => {
+    this.fileSaveHandler = e => {
+      e.preventDefault();
+      //error check this
+      this.socket.emit('save_canvas', {
+        image: this.state.selectedImage
+      });
       return false;
       //emit save and upload to s3
     }
@@ -64,6 +69,10 @@ class Canvas extends React.Component {
         <form className="input" onSubmit={(e) => this.fileUploadHandler(e)}>
             <input type="file" onChange={(e) => this.setState({selectedImage: e.target.files[0]})}/>
             <input type='submit' value="Upload" />
+        </form>
+
+        <form className="input" onSubmit={(e) => this.fileSaveHandler(e)}>
+            <input type='submit' value="Save to Gallery" />
         </form>
 
       </div>
