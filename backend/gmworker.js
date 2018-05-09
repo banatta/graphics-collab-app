@@ -14,9 +14,10 @@ var fs = require('fs');
 //send to all clients states
 redisConnection.on("upload_new_image", (data, channel) => {
   //open new image and keep updated
+  console.log("heard upload");
   image = data;
   const buf = new Buffer(image.data.image.data);
-  fs.writeFile('../public/canvas.jpg', buf, 'hex', function (err) {
+  fs.writeFile('canvas.jpg', buf, 'hex', function (err) {
       if (err) {
           console.log("There was an error writing the image")
       }
