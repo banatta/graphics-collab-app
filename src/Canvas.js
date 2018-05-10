@@ -19,6 +19,8 @@ class Canvas extends React.Component {
     //upload the file to the backend
     this.fileUploadHandler = e => {
       e.preventDefault();
+      //this.setState({selectedImage: e.target.files[0]})
+      console.log(this.state)
       //error check this
       this.socket.emit('upload_new_image', {
         image: this.state.selectedImage
@@ -74,29 +76,43 @@ class Canvas extends React.Component {
 
   render() {
     return (
-      <div class="canvas-component">
-        <h3>Canvas</h3>
-        <canvas id="canvas" alt="canvas" width="500" height="500" ></canvas>
-        <p> Upload an image to begin </p>
+      <div className="canvas-component col-md-6">
+          <h2>Canvas</h2>
+          <canvas id="canvas" alt="canvas" width="500" height="500" ></canvas>
+          <p>Upload an image to begin</p>
 
-       
-        <form className="input" onSubmit={(e) => this.fileUploadHandler(e)}>
-            <input type="file" onChange={(e) => this.setState({selectedImage: e.target.files[0]})}/>
-            <input type='submit' value="Upload" />
-        </form>
+          <form onSubmit={(e) => this.fileUploadHandler(e)}>
+            <div className="btn-group">
+              <div className="form-group">
+                <label htmlFor="image-upload" className="btn btn-secondary">Select File</label>
+                <input id="image-upload" type="file" accept="image" onChange={(e) => this.setState({selectedImage: e.target.files[0]})} hidden />
+              </div>
+              <input type='submit' className="btn btn-primary" value="Upload" />
+            </div>
+          </form>
 
-        <button type='button' onClick={(e) => this.fileSaveHandler(e)}> Save to Gallery </button>
+          <span>Transform</span>
+          <div className="btn-group d-flex">
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'blur')}> Blur </button>
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'implode')}> Implode </button>
+          </div>
 
-        <div class="gmControls">
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'blur')}> Blur </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'implode')}> Implode </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'sepia')}> Sepia </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'flip')}> Flip </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'flop')}> Flop </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'monochrome')}> Monochrome </button>
-          <button type='button' onClick={(e) => this.imageEditHandler(e, 'negate')}> Negate </button>
-        </div>
+          <span>Flip</span>
+          <div className="btn-group d-flex">
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'flip')}> Vertical </button>
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'flop')}> Horizontal </button>
+          </div>
 
+          <span>Filter</span>
+          <div className="btn-group d-flex">
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'sepia')}> Sepia </button>
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'monochrome')}> Monochrome </button>
+            <button className="btn btn-outline-primary w-100" onClick={(e) => this.imageEditHandler(e, 'negate')}> Negate </button>
+          </div>
+          <br />
+          <div>
+            <button className="btn btn-success" onClick={(e) => this.fileSaveHandler(e)}>Save to Gallery</button>
+          </div>
       </div>
     );
   }

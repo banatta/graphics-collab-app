@@ -12,8 +12,10 @@ class Chat extends React.Component {
     this.state = {
       chatMsgs:[{
         username: "GraphicsBot",
-        message: <p>Welcome to Graphics Collaborator!</p>,
-      }]
+        message: 'Welcome to Graphics Collaborator!',
+      }],
+      username: '',
+      message: ''
     };
 
     this.socket = io('localhost:8080');
@@ -59,18 +61,18 @@ class Chat extends React.Component {
     const { chatMsgs } = this.state;
 
     return (
-      <div className="chat">
-          <h3>Chat</h3>
-          <ul className="chatMsgs" ref="chatMsgs">
+      <div className="chat col-md-6">
+          <h2>Chat</h2>
+          <div className="chatMsgs" ref="chatMsgs">
               {
-                  chatMsgs.map((chat) => 
-                      <Message chat={chat} user={username} />
+                  chatMsgs.map((chat, i) => 
+                      <Message chat={chat} key={'msg' + i} user={username} />
                   )
               }
-          </ul>
+          </div>
           <form className="input" onSubmit={(e) => this.submitMessage(e)}>
-              <input id="username" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} required="required"/>
-              <input id="message" autocomplete="off" placeholder="Type your message!" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})} required="required"/>
+              <input id="username" placeholder="Username" type="text" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} required />
+              <input id="message" autoComplete="off" type="text" placeholder="Type your message!" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})} required />
               <input type="submit" value="Submit" />
           </form>
       </div>

@@ -55,13 +55,13 @@ class Gallery extends React.Component {
     const { gallery } = this.state;
 
     return (
-      <div className="gallery">
-          <h3>Gallery</h3>
+      <div className="gallery col-md-12 text-center">
+          <h2>Gallery</h2>
           <button onClick = {(e) => this.refreshGalleryHandler(e)} >refresh</button>
           <ul className="gallery" ref="gallery">
               {
-                  gallery.map((image) => 
-                      <li class="gallery-item"><img src={image} alt="" /> </li>
+                  gallery.map((image, i) => 
+                      <li key={i} className="gallery-item"><img src={image} alt="" /></li>
                   )
               }
           </ul>

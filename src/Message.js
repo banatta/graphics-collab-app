@@ -1,12 +1,9 @@
 import React from 'react';
 
 const Message = ({chat, user}) => (
-    <li>
-        <div class='sentmsg'>
-          <p class='username'> { chat.username } </p>
-          <p class='msgtext'> {chat.message } </p>
-        </div>
-    </li>
+    <div>
+      <p><strong>{ chat.username }:</strong> { chat.message }</p>
+    </div>
 );
 
 export default Message;
