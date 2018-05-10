@@ -35,6 +35,7 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
+    this.requestGallery()
     this.scrollToBot();
   }
 
