@@ -19,8 +19,6 @@ class Canvas extends React.Component {
     //upload the file to the backend
     this.fileUploadHandler = e => {
       e.preventDefault();
-      //this.setState({selectedImage: e.target.files[0]})
-      console.log(this.state)
       //error check this
       this.socket.emit('upload_new_image', {
         image: this.state.selectedImage
