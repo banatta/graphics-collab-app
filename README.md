@@ -12,7 +12,7 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
 ### Create s3config.json
   This file contains the credentials to an s3 bucket:
-  
+
   ```
     {
       "accessKeyId": "ABCDEFGHIJETC", 
@@ -28,7 +28,7 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
   `$ node backend/app.js`
 
 ### Run the S3 Worker
-  `$ node backend/s3worker.js`
+  `$ node backend/s3bucket.js`
 
 ### Run the GraphicsMagick Worker
   `$ node backend/gmworker.js`
