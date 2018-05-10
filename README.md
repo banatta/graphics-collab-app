@@ -3,35 +3,35 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
 To run our project
 
-Install graphicsmagick
+Install graphicsmagick:
   apt-get install graphicsmagick
 
-Install dependencies
+Install dependencies:
   npm install
 
-Create s3config.json with the credentials to an s3 bucket
+Create s3config.json with the credentials to an s3 bucket:
 {
   "accessKeyId": "ABCDEFGHIJETC", 
   "secretAccessKey": "sakldalsdnaskldnalsnkdkanls", 
   "region": "us-east-1"
 } 
 
-Make sure redis is running
+Make sure redis is running:
   redis-server
 
-Run the react front end
-  npm start
-
-Run the backend server
+Run the backend server:
   node backend/app.js
 
-Run the s3 Worker
+Run the s3 Worker:
   node backend/s3worker.js
 
-Run the GraphicsMagick Worker
+Run the GraphicsMagick Worker:
   node backend/gmworker.js
 
+Run the react front end:
+  npm start
 
+Go to localhost:3000
 
 _______________________________________________________
 
