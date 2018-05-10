@@ -1,37 +1,46 @@
 This is a project for CS554 Web Programming 2.
 Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
-To run our project
+## Running the Project
 
-Install graphicsmagick:
-  apt-get install graphicsmagick
+### Install graphicsmagick:
+  `$ apt-get install graphicsmagick`
 
-Install dependencies:
-  npm install
+### Install dependencies:
+  `$ npm install`
 
-Create s3config.json with the credentials to an s3 bucket:
-{
-  "accessKeyId": "ABCDEFGHIJETC", 
-  "secretAccessKey": "sakldalsdnaskldnalsnkdkanls", 
-  "region": "us-east-1"
-} 
+### Create s3config.json
+  This file contains the credentials to an s3 bucket:
+  ```
+    {
+      "accessKeyId": "ABCDEFGHIJETC", 
+      "secretAccessKey": "sakldalsdnaskldnalsnkdkanls", 
+      "region": "us-east-1"
+    } 
+  ```
 
-Make sure redis is running:
-  redis-server
+### Run the Redis server
+  `$ redis-server`
 
-Run the backend server:
-  node backend/app.js
+### Run the backend server
+  From the root directory of the project:
+  `$ node backend/app.js`
 
-Run the s3 Worker:
-  node backend/s3worker.js
+### Run the S3 Worker
+  From the root directory of the project:
+  `$ node backend/s3worker.js`
 
-Run the GraphicsMagick Worker:
-  node backend/gmworker.js
+### Run the GraphicsMagick Worker
+  From the root directory of the project:
+  `$ node backend/gmworker.js`
 
-Run the react front end:
-  npm start
+### Run the React front end:
+  From the root directory of the project:
+  `$ npm start`
 
-Go to localhost:3000
+### Navigate to localhost:3000
+
+The project will now be running in your browser
 
 _______________________________________________________
 
