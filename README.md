@@ -1,4 +1,5 @@
 This is a project for CS554 Web Programming 2.
+
 Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
 ## Running the Project
@@ -11,6 +12,7 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
 ### Create s3config.json
   This file contains the credentials to an s3 bucket:
+  
   ```
     {
       "accessKeyId": "ABCDEFGHIJETC", 
@@ -23,19 +25,15 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
   `$ redis-server`
 
 ### Run the backend server
-  From the root directory of the project:
   `$ node backend/app.js`
 
 ### Run the S3 Worker
-  From the root directory of the project:
   `$ node backend/s3worker.js`
 
 ### Run the GraphicsMagick Worker
-  From the root directory of the project:
   `$ node backend/gmworker.js`
 
 ### Run the React front end:
-  From the root directory of the project:
   `$ npm start`
 
 ### Navigate to localhost:3000
