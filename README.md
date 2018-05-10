@@ -24,17 +24,20 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 ### Run the Redis server
   `$ redis-server`
 
-### Run the backend server
-  `$ node backend/app.js`
-
-### Run the S3 Worker
-  `$ node backend/s3bucket.js`
-
-### Run the GraphicsMagick Worker
-  `$ node backend/gmworker.js`
-
 ### Run the React front end:
   `$ npm start`
+
+### Enter the backend directory
+  `$ cd backend`
+
+#### Run the backend server
+  `$ node backend/app.js`
+
+#### Run the S3 Worker
+  `$ node backend/s3bucket.js`
+
+#### Run the GraphicsMagick Worker
+  `$ node backend/gmworker.js`
 
 ### Navigate to localhost:3000
 
