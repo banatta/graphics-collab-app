@@ -5,6 +5,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "aws-sdk": "^2.229.1",
+    "gm": "^1.23.1",
     "node-redis-pubsub": "^2.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

@@ -19,12 +19,12 @@ io.on('connection', (socket) => {
   //Chat
   socket.on('send_message', function(data){
     io.emit('receive_message', data);
-  })
+  });
 
   //Request Gallery
   socket.on('request_gallery', function(data){
     redisConnection.emit("request_gallery", {data});
-  })
+  });
 
   //Return Gallery
   redisConnection.on("return_gallery", (data, channel) => {
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
   //Image upload
   socket.on('upload_new_image', function(data){
     redisConnection.emit("upload_new_image", {data});
-  })
+  });
 
   //Image change
   redisConnection.on("send_canvas_buffer", (data, channel) => {
@@ -44,7 +44,15 @@ io.on('connection', (socket) => {
   //Save Canvas to s3
   socket.on("save_canvas", function(data){
     redisConnection.emit("save_canvas", {data});
-  })
+  });
 
+  //Fetch canvas for new connections
+  socket.on("fetch_canvas", function(data){
+    redisConnection.emit("fetch_canvas", {data});
+  });
 
+  //GraphicsMagick Commands
+  socket.on('edit_image', function(data){
+    redisConnection.emit('edit_image', data);
+  });
 });

@@ -36,8 +36,16 @@ class Canvas extends React.Component {
       //emit save and upload to s3
     }
 
+    this.imageEditHandler = (e, command) => {
+      e.preventDefault();
+
+      console.log(command);
+      this.socket.emit('edit_image', command);
+      return false;
+    }
+
     //clear the canvas, then redraw from the buffer
-    const updateCanvasState = data => {
+    const updateCanvas = data => {
       var canvas = document.getElementById('canvas')
       var ctx = canvas.getContext('2d');
       if(data.image){
@@ -50,25 +58,18 @@ class Canvas extends React.Component {
       }
     }
 
+
     //This fires whenever the image is changed/edited
     this.socket.on('send_canvas_buffer', function(data){
-      updateCanvasState(data);
+      updateCanvas(data);
     });
   }
 
-
-
-
-  // fetchCanvas(){
-  //   fetch("../backend/canvas.jpg")
-  //     .then(res => {
-  //       console.log(res);
-  //     });
-  // }
-
+  fetchCanvas(){
+    this.socket.emit("fetch_canvas", '');
+  }
   componentDidMount() {
-    //this.fetchCanvas();
-    //request canvas state
+    this.fetchCanvas();
   }
 
   render() {
@@ -84,9 +85,17 @@ class Canvas extends React.Component {
             <input type='submit' value="Upload" />
         </form>
 
-        <form className="input" onSubmit={(e) => this.fileSaveHandler(e)}>
-            <input type='submit' value="Save to Gallery" />
-        </form>
+        <button type='button' onClick={(e) => this.fileSaveHandler(e)}> Save to Gallery </button>
+
+        <div class="gmControls">
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'blur')}> Blur </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'implode')}> Implode </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'sepia')}> Sepia </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'flip')}> Flip </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'flop')}> Flop </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'monochrome')}> Monochrome </button>
+          <button type='button' onClick={(e) => this.imageEditHandler(e, 'negate')}> Negate </button>
+        </div>
 
       </div>
     );

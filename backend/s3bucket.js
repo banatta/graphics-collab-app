@@ -47,10 +47,9 @@ redisConnection.on("save_canvas", (data, channel) => {
     },function (resp) {
       console.log(arguments);
       console.log('Successfully uploaded package.');
+      //refresh the gallery
+      redisConnection.emit("request_gallery", 'Saved');
     });
   });
 
-  //refresh the gallery
-  console.log("emmiting gallery request");
-  redisConnection.emit("request_gallery", 'Saved');
 });

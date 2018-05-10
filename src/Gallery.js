@@ -9,7 +9,7 @@ class Gallery extends React.Component {
     super(props);
 
     this.state = {
-      gallery:["https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"]
+      gallery:[]
     };
 
     this.socket = io('localhost:8080');
