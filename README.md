@@ -1,3 +1,40 @@
+This is a project for CS554 Web Programming 2.
+Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
+
+To run our project
+
+Install graphicsmagick
+  apt-get install graphicsmagick
+
+Install dependencies
+  npm install
+
+Create s3config.json with the credentials to an s3 bucket
+{
+  "accessKeyId": "ABCDEFGHIJETC", 
+  "secretAccessKey": "sakldalsdnaskldnalsnkdkanls", 
+  "region": "us-east-1"
+} 
+
+Make sure redis is running
+  redis-server
+
+Run the react front end
+  npm start
+
+Run the backend server
+  node backend/app.js
+
+Run the s3 Worker
+  node backend/s3worker.js
+
+Run the GraphicsMagick Worker
+  node backend/gmworker.js
+
+
+
+_______________________________________________________
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
