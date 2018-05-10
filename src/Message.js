@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Message = ({chat, user}) => (
-    <div>
+    <div className="text-left">
       <p><strong>{ chat.username }:</strong> { chat.message }</p>
     </div>
 );

@@ -15,7 +15,8 @@ class Chat extends React.Component {
         message: 'Welcome to Graphics Collaborator!',
       }],
       username: '',
-      message: ''
+      message: '',
+      disabled: false
     };
 
     this.socket = io('localhost:8080');
@@ -29,7 +30,7 @@ class Chat extends React.Component {
         message: this.state.message
       });
 
-      this.setState({message: ''});
+      this.setState({message: '', disabled: true});
       //make username readonly
     }
 
@@ -71,7 +72,7 @@ class Chat extends React.Component {
               }
           </div>
           <form className="input" onSubmit={(e) => this.submitMessage(e)}>
-              <input id="username" placeholder="Username" type="text" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} required />
+              <input id="username" placeholder="Username" type="text" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} disabled={this.state.disabled} required />
               <input id="message" autoComplete="off" type="text" placeholder="Type your message!" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})} required />
               <input type="submit" value="Submit" />
           </form>
