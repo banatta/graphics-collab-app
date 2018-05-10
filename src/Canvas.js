@@ -36,33 +36,46 @@ class Canvas extends React.Component {
       //emit save and upload to s3
     }
 
+    //clear the canvas, then redraw from the buffer
+    const updateCanvasState = data => {
+      var canvas = document.getElementById('canvas')
+      var ctx = canvas.getContext('2d');
+      if(data.image){
+        var img = new Image();
+        img.onload = function() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+        };
+        img.src = 'data:image/jpeg;base64,' + data.buffer;
+      }
+    }
+
     //This fires whenever the image is changed/edited
-    this.socket.on('canvas_image_changed', function(data){
-      console.log(data);
-      //updateCanvasState();
+    this.socket.on('send_canvas_buffer', function(data){
+      updateCanvasState(data);
     });
-
-    // const updateCanvasState = (data) => {
-    //   this.setState({
-    //     canvasImage: "./public/canvas.jpg?"
-    //   });
-    // }
-
   }
 
-  fileUpload(){
 
-  }
+
+
+  // fetchCanvas(){
+  //   fetch("../backend/canvas.jpg")
+  //     .then(res => {
+  //       console.log(res);
+  //     });
+  // }
 
   componentDidMount() {
+    //this.fetchCanvas();
     //request canvas state
   }
 
   render() {
     return (
-      <div className="canvas">
+      <div class="canvas-component">
         <h3>Canvas</h3>
-        <img src={this.state.canvasImage} alt="canvas" />
+        <canvas id="canvas" alt="canvas" width="500" height="500" ></canvas>
         <p> Upload an image to begin </p>
 
        

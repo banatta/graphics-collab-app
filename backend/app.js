@@ -37,8 +37,8 @@ io.on('connection', (socket) => {
   })
 
   //Image change
-  redisConnection.on("canvas_image_changed", (data, channel) => {
-    io.emit("canvas_image_changed", data);
+  redisConnection.on("send_canvas_buffer", (data, channel) => {
+    io.emit("send_canvas_buffer", {image: true, buffer: data});
   });
 
   //Save Canvas to s3

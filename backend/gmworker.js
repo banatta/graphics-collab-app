@@ -24,8 +24,16 @@ redisConnection.on("upload_new_image", (data, channel) => {
       else {
           console.log("image uploaded successfully")
           //send message saying image was changed back to clients
-          redisConnection.emit("canvas_image_changed", image.data.image.data);
+          redisConnection.emit("canvas_image_changed", data);
       }
   });
 
+});
+
+//open the file and send a buffer to client
+redisConnection.on("canvas_image_changed", (data, channel) => {
+  fs.readFile('canvas.jpg', function(err, file) {
+    if (err) throw err;
+    redisConnection.emit("send_canvas_buffer", file.toString('base64'));
+  })
 });
