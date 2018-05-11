@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
       <div className="container">
         <div className="text-center">
-          <h1>Graphics Collaborator</h1>
+          <h1 className="title">Graphics Collaborator</h1>
         </div>
         <div className="row">
           <Canvas />

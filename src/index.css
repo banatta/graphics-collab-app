@@ -4,6 +4,47 @@ body {
   font-family: sans-serif;
 }
 
+.title {
+  color: darkblue;
+  font-size: 300%;
+}
+
+.comp-title {
+  color: darkblue;
+  font-family: verdana;
+  font-size: 200%;
+}
+
+p {
+  color: #111111;
+  font-family: courier;
+}
+
+input.btn.btn-primary{
+  height: 40px;
+}
+
+.btn{
+  margin-left: 2px;
+  background-color: lightblue !important;
+  color: #333333 !important;
+  font-weight: bold !important;
+}
+
+.chat-msg-msg{
+  margin-left: 20px;
+  color: #111111;
+}
+
+.gallery {
+  list-style-type: none;
+}
+
+.gallery-item {
+  display: inline-block;
+  padding: 5px;
+}
+
 .gallery-item > img {
   height: 200px;
 }

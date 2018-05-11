@@ -63,7 +63,7 @@ class Chat extends React.Component {
 
     return (
       <div className="chat col-md-6">
-          <h2>Chat</h2>
+          <h2 className="comp-title">Chat</h2>
           <div className="chatMsgs" ref="chatMsgs">
               {
                   chatMsgs.map((chat, i) => 
@@ -74,7 +74,7 @@ class Chat extends React.Component {
           <form className="input" onSubmit={(e) => this.submitMessage(e)}>
               <input id="username" placeholder="Username" type="text" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} disabled={this.state.disabled} required />
               <input id="message" autoComplete="off" type="text" placeholder="Type your message!" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})} required />
-              <input type="submit" value="Submit" />
+              <input className= ".btn" type="submit" value="Submit" />
           </form>
       </div>
     );

@@ -82,7 +82,7 @@ class Canvas extends React.Component {
   render() {
     return (
       <div className="canvas-component col-md-6">
-          <h2>Canvas</h2>
+          <h2 className="comp-title">Canvas</h2>
           <canvas id="canvas" alt="canvas" width="500" height="500" ></canvas>
           <p>Upload an image to begin</p>
 
