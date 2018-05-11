@@ -1,5 +1,6 @@
 This is a project for CS554 Web Programming 2.
 
+Group Tenacious D
 Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
 
 ## Running the Project
@@ -31,17 +32,34 @@ Adam Banatt, Stephen McArdle, John Seebode, Zachary Shakked
   `$ cd backend`
 
 #### Run the backend server
-  `$ node backend/app.js`
+  `$ node app.js`
 
 #### Run the S3 Worker
-  `$ node backend/s3bucket.js`
+  `$ node s3bucket.js`
 
 #### Run the GraphicsMagick Worker
-  `$ node backend/gmworker.js`
+  `$ node gmworker.js`
 
 ### Navigate to localhost:3000
 
 The project will now be running in your browser
+
+_______________________________________________________
+
+## About our project
+  This project is a react app that has a chatroom and image editor, where users can upload an image, edit it with a ui, and finally save it to a gallery hosted by s3. This project has a few main components:
+
+###React Frontend
+  We bootstrapped our frontend using create-react-app. The frontend has 3 main components, a Chat, where users can communicate, Canvas, where users upload images to the server and edit them, and Gallery, which displays our images from the s3 bucket.
+
+###backend/app.js Server
+  This server is the connection between our front end ui and the workers. It uses socket.io to talk to the client, and redis to talk to the workers.
+
+###backend/gmworker.js
+  gmworker.js is the worker that handles everything to do with GraphicsMagick. It hears redis messages from the server, when a ui button is pressed, that tell it to edit the image and resave it, and every time it resaves the image, it converts it to a base64 string, and sends to the server, which sends it to the client, which redraws the canvas element.
+
+###backend/s3bucket.js
+  s3bucket.js is the connection to our s3bucket, which on the front end translates to the 'Save to Gallery' button, and the Gallery refresh. It has two functions, 'refresh gallery', which polls all the images from the s3 bucket and sends it to the client, and 'upload image' which uploads the current canvas to s3, then refreshes the gallery again.
 
 _______________________________________________________
 
