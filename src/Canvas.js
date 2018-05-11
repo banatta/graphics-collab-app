@@ -10,6 +10,7 @@ class Canvas extends React.Component {
     super(props);
 
     this.state = {
+      initialImage: null,
       selectedImage: null,
       canvasImage: null
     };
@@ -39,9 +40,16 @@ class Canvas extends React.Component {
     this.imageEditHandler = (e, command) => {
       e.preventDefault();
 
-      console.log(command);
       this.socket.emit('edit_image', command);
       return false;
+    }
+
+    this.imageResetHandler = (e) => {
+      e.preventDefault();
+      console.log(this.initialImage)
+      this.setState({selectedImage: this.state.initialImage})
+      this.fileUploadHandler(e)
+      return false
     }
 
     //clear the canvas, then redraw from the buffer
@@ -57,7 +65,6 @@ class Canvas extends React.Component {
         img.src = 'data:image/jpeg;base64,' + data.buffer;
       }
     }
-
 
     //This fires whenever the image is changed/edited
     this.socket.on('send_canvas_buffer', function(data){
@@ -83,7 +90,7 @@ class Canvas extends React.Component {
             <div className="btn-group">
               <div className="form-group">
                 <label htmlFor="image-upload" className="btn btn-secondary">Select File</label>
-                <input id="image-upload" type="file" accept="image" onChange={(e) => this.setState({selectedImage: e.target.files[0]})} hidden />
+                <input id="image-upload" type="file" accept="image/*" onChange={(e) => this.setState({selectedImage: e.target.files[0], initialImage: e.target.files[0]})} hidden />
               </div>
               <input type='submit' className="btn btn-primary" value="Upload" />
             </div>
@@ -109,6 +116,7 @@ class Canvas extends React.Component {
           </div>
           <br />
           <div>
+            <button className="btn btn-danger" onClick={(e) => this.imageResetHandler(e)}>Reset Image</button>
             <button className="btn btn-success" onClick={(e) => this.fileSaveHandler(e)}>Save to Gallery</button>
           </div>
       </div>
